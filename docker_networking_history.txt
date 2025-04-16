@@ -1,0 +1,166 @@
+  549  mkdir docker_shallow_homework
+  550  cd docker_shallow_homework/
+  551  ls
+  552  ll
+  553  docker container ls
+  554  docker ps -a
+  555  docker stop CONTAINER
+  556  docker stop cool_swirles
+  557  docker ps -a
+  558  docker rm -f cool_swirles
+  559  docker stop cool_swirles
+  560  docker ps -a
+  561  docker rm -f .
+  562  docker rm -f all
+  563  touch stop_running.sh
+  564  chmod +x stop_running.sh 
+  565  nano stop_running.sh 
+  566  ls
+  567  cat stop_running.sh 
+  568  docker ps -q
+  569  ./stop_running.sh 
+  570  docker ps -q
+  571  nano stop_running.sh 
+  572  ./stop_running.sh 
+  573  docker rm ${docker ps -q}
+  574  docker stop ${docker ps -q}
+  575  docker stop $(docker ps -q)
+  576  docker rm $(docker ps -q)
+  577  docker cotainer ps
+  578  docker container prune
+  579  docker container stop
+  580  docker container stop --help
+  581  docker container stop -t 1
+  582  docker conainer ps
+  583  docker ps
+  584  docker ps -a
+  585  clear
+  586  docker container run -d nginx
+  587  docker container ls
+  588  docker container inspect | jq .[].NetworkSettings.Network.bridge.IPAddress
+  589  docker container inspect recursing_bhaskara | jq .[].NetworkSettings.Network.bridge.IPAddress
+  590  docker container inspect recursing_bhaskara
+  591  docker container inspect recursing_bhaskara | jq .[].NetworkSettings.Networks.bridge.IPAddress
+  592  curl 172.17.0.2
+  593  docker container run -d -p 80:80 nginx
+  594  ss
+  595  ss -tulpn
+  596  docker container ps
+  597  curl localhost:80
+  598  docker container run -d -P nginx
+  599  docker container ls
+  600  curl localhost:32770
+  601  docker network ls
+  602  docker network inspect br01
+  603  docker network rm br01
+  604  docker network ls
+  605  docker create --name my-nginx --network br02 nginx:latest
+  606  docker network connect br02 my-nginx
+  607  docker network disconnect br02 my-nginx
+  608  docker run -dit aloine /bin/sh
+  609  docker run -dit alpine /bin/sh
+  610  docker ps
+  611  docker inspect 87e1df16689e
+  612  echo "First IP - 172.17.0.5" > ip.txt
+  613  docker ps
+  614  docker inspect b2d04f130ce3
+  615  echo "First IP - 172.17.0.5, Second is 172.17.0.6" > ip.txt
+  616  cat ip.txt 
+  617  docker exec -it 87e1df16689e /bin/sh
+  618  docker ps
+  619  docker exec -it 87e1df16689e /bin/sh
+  620  clear
+  621  docker network ls
+  622  docker network create alpine-net
+  623  docker run -dit --network alpine-net --name alp1 alpine /bin/sh
+  624  docker run -dit --network alpine-net --name alp2 alpine /bin/sh
+  625  docker run -dit 0name ap3 alpine /bin/sh
+  626  docker run -dit --name ap3 alpine /bin/sh
+  627  docker exec -it alp1 /bin/sh -c 'ping alp2-ip'
+  628  docker container ps
+  629  docker inspect 88758b964ec2 | jq -r '.[0].NetworkSettings.IPAddress'
+  630  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.IPAddress'
+  631  docker inspect 88758b964ec2 | jq -r '.[]'
+  632  docker inspect 88758b964ec2 | jq -r '.[]Networks'
+  633  docker inspect 88758b964ec2 | jq -r '.[]NetworkSettings'
+  634  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings'
+  635  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks.IPAddress'
+  636  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks'
+  637  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks.alpine-net.IPAddress'
+  638  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks.alpine-net'
+  639  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks'
+  640  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks.IPAddress'
+  641  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks.alpine-net'
+  642  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks.bridge'
+  643  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks'
+  644  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks.alpine-net.IPAddress'
+  645  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Network'
+  646  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks'
+  647  clear
+  648  docker container ps
+  649  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks'
+  650  docker inspect 88758b964ec2 | jq -r '.[].NetworkSettings.Networks' > alp1.txt
+  651  docker container ps
+  652  docker inspect 7b69e294985a | jq -r '.[].NetworkSettings.Networks' > alp2.txt
+  653  docker inspect e5aa1abfc6f3 | jq -r '.[].NetworkSettings.Networks' > ap3.txt
+  654  cat ap3.txt 
+  655  docker exec -it alp1 /bin/sh -c 
+  656  cat alp2.txt 
+  657  docker exec -it alp1 /bin/sh -c 'ping 172.19.0.3'
+  658  cat ap3.txt 
+  659  docker exec -it alp1 /bin/sh -c 'ping 172.17.0.7'
+  660  docker container ps
+  661  docker exec -it alp1 /bin/sh -c 'ping alp2'
+  662  docker exec -it alp1 /bin/sh -c 'ping ap3'
+  663  docker stop ${docker ps -q}
+  664  docker stop $(docker ps -q)
+  665  ls
+  666  cat stop_running.sh 
+  667  nano stop_running.sh 
+  668  ls
+  669  docker network rm alpine-net
+  670  docker network create --subnet 10.100.0.0/16\ --gateway 10.100.100.1 br02
+  671  docker network create --help
+  672  docker network create --subnet 10.100.0.0/16 --gateway 10.100.100.1 br02
+  673  docker network create --subnet 10.100.0.0/16 --gateway 10.100.100.1 --ip-range=10.100.4.0/24 br04
+  674  docker network create --subnet 10.100.0.0/16 --gateway 10.100.100.2 --ip-range=10.100.4.0/24 br04
+  675  docker network create --subnet 10.100.0.0/16 --gateway 10.100.4.1 --ip-range=10.100.4.0/24 br04
+  676  docker network create --subnet 10.100.4.0/16 --gateway 10.100.4.1 --ip-range=10.100.4.0/24 br04
+  677  docker network create --subnet 10.100.0.0/16 --gateway 10.100.4.1 --ip-range=10.100.4.0/24 br04
+  678  docker network create --subnet 10.100.0.0/16 --gateway 10.100.100.2 --ip-range=10.100.4.0/24 br04
+  679  docker network create --subnet 192.168.1.0/24 --gateway 192.168.1.1 docker-net
+  680  docker run -dit --network docker-net alpine /bin/sh
+  681  docker ps
+  682  docker inspect objective_chatelet
+  683  docker ps
+  684  docker kill objective_chatelet
+  685  docker ps
+  686  docker network rm docker-net
+  687  docker run -d -P ubuntu/apache2
+  688  dockr ps
+  689  docker ps
+  690  docker run -d -p 8080:80 ubuntu/apache2
+  691  docker ps
+  692  curl localhost:8080
+  693  docker ps
+  694  docker network create lamp-net
+  695  docker network ls
+  696  docker run -d --network lamp-net -p 8080:80 ubuntu/apache2
+  697  docker run -d --network lamp-net -p 8081:80 ubuntu/apache2
+  698  docker ps
+  699  docker run -d --network lamp-net -p 3306:3306 mysql
+  700  docker ps -a
+  701  docker inspect 92c9f5516227 | grep 3306
+  702  ls
+  703  ./stop_running.sh 
+  704  docker rm $(docker ps -a -q)
+  705  ls
+  706  touch docker_networking_history.txt
+  707  history > docker_networking_history.txt 
+  708  cat docker_networking_history.txt 
+  709  ls
+  710  git init --initial-branch=main
+  711  ll
+  712  git add docker_networking_history.txt 
+  713  nano stop_running.sh 
+  714  ls
